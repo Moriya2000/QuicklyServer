@@ -59,5 +59,13 @@ namespace QuicklyServer.Controllers
         {
             return ClientBL.GetEmailAddressPassword(EmailAddress, Password);
         }
+
+        [Route("GetEmailAddressPasswordID/{EmailAddress}/{Password}")]
+        [HttpGet]
+        public int GetEmailAddressPasswordID(string EmailAddress, string Password)
+        {
+            return ClientBL.GetEmailAddressPasswordID(EmailAddress, Password);
+        }
+
     }
 }

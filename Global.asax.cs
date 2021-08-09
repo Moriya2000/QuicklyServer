@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BL;
+using QuicklyServer.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +14,7 @@ namespace QuicklyServer
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
+            ScheduledFunctions.RunPrepareDaily(new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 18, 07, 00));
         }
         protected void Application_BeginRequest()
         {
@@ -26,5 +29,8 @@ namespace QuicklyServer
             }
 
         }
+
     }
 }
+
+

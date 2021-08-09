@@ -23,7 +23,7 @@ namespace QuicklyServer.Controllers
         //פונקציה השולפת ימי עסקים על פי קוד
         [Route("GetIdBusinessDays/{id}")]
         [HttpGet]
-        public BusinessDaysEntities GetIdBusinessDays(int id)
+        public List<BusinessDaysEntities> GetIdBusinessDays(int id)
         {
             return BusinessDaysBL.GetIdBusinessDays(id);
         }

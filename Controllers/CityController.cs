@@ -45,11 +45,11 @@ namespace QuicklyServer.Controllers
         }
 
         //פונקציה שמוחקת עיר שקיימת
-        [Route("GetRemoveCity/{id}")]
+        [Route("GetRemoveCitiesCompany/{id}")]
         [HttpDelete]
-        public List<CityEntities> GetRemoveCity(int id)
+        public List<CitiesCompanyEntities> GetRemoveCitiesCompany(int id)
         {
-            return CityBL.GetRemoveCity(id);
+            return CitiesCompanyBL.GetRemoveCitiesCompany(id);
         }
     }
 }

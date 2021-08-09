@@ -28,6 +28,15 @@ namespace QuicklyServer.Controllers
             return OrderBL.GetIdOrder(id);
         }
 
+        //פונקציה השולפת את כל ההזמנות על פי קוד
+        [Route("GetAllIdOrder/{id}")]
+        [HttpGet]
+        public List<OrderEntities> GetAllIdOrder(int id)
+        {
+            var listOrder= OrderBL.GetAllIdOrder(id);
+            return listOrder;
+        }
+
         //פונקציה המוסיפה הזמנה
         [Route("GetAddOrder")]
         [HttpPut]
@@ -51,5 +60,13 @@ namespace QuicklyServer.Controllers
         {
             return OrderBL.GetRemoveOrder(id);
         }
+
+        [Route("GetOrderTrack/{id}")]
+        [HttpGet]
+        public int GetOrderTrack(int id)
+        {
+            return OrderBL.GetOrderTrack(id);
+        }
+        
     }
 }

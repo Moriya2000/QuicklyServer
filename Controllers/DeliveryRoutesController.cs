@@ -12,6 +12,14 @@ namespace QuicklyServer.Controllers
     [RoutePrefix("api/DeliveryRoutes")]
     public class DeliveryRoutesController : ApiController
     {
+        //פונקציה המקבלת מייל של עובד ושולחת לו את המסלול של היום
+        [Route("GetSendEmail/{email}/{kod1}")]
+        [HttpPost]
+        public int GetSendEmail(string email, int kod1, [FromBody] List<string>sendListOrderToWorker)
+        {
+            return DeliveryRoutesBL.GetSendEmail(email, sendListOrderToWorker);
+        }
+
         //פונקציה השולפת רשימת מסלולי משלוחים
         [Route("GatAllDeliveryRoutes")]
         [HttpGet]
@@ -23,7 +31,7 @@ namespace QuicklyServer.Controllers
         //פונקציה השולפת מסלול משלוח על פי קוד
         [Route("GetIdDeliveryRoutes/{id}")]
         [HttpGet]
-        public DeliveryRoutesEntities GetIdDeliveryRoutes(int id)
+        public List<DeliveryRoutesEntities> GetIdDeliveryRoutes(int id)
         {
             return DeliveryRoutesBL.GetIdDeliveryRoutes(id);
         }
@@ -31,7 +39,7 @@ namespace QuicklyServer.Controllers
         //פונקציה המוסיפה מסלול משלוח
         [Route("GetAddDeliveryRoutes")]
         [HttpPut]
-        public List<DeliveryRoutesEntities> GetAddDeliveryRoutes([FromBody] DeliveryRoutesEntities C)
+        public int GetAddDeliveryRoutes([FromBody] DeliveryRoutesEntities C)
         {
             return DeliveryRoutesBL.GetAddDeliveryRoutes(C);
         }
@@ -51,5 +59,7 @@ namespace QuicklyServer.Controllers
         {
             return DeliveryRoutesBL.GetRemoveDeliveryRoutes(id);
         }
+
+
     }
 }

@@ -12,21 +12,28 @@ namespace QuicklyServer.Controllers
     [RoutePrefix("api/DestinationsRoute")]
     public class DestinationsRouteController : ApiController
     {
-        //פונקציה השולפת רשימה
-        [Route("GatAllDestinationsRoute")]
+        // פונקציה השולפת רשימה
+        [Route("GetDestinationsRoute")]
         [HttpGet]
-        public List<DestinationsRouteEntities> GetAllDestinationsRoute()
+        public List<DestinationsRouteEntities> GetDestinationsRoute()
         {
-            return DestinationsRouteBL.GetAllDestinationsRoute();
+            return DestinationsRouteBL.GetDestinationsRoute();
         }
 
         //פונקציה השולפת יעד במסלול על פי קוד
         [Route("GetIdDestinationsRoute/{id}")]
         [HttpGet]
-        public DestinationsRouteEntities GetIdDestinationsRoute(int id)
+        public List<int> GetIdDestinationsRoute(int id)
         {
             return DestinationsRouteBL.GetIdDestinationsRoute(id);
         }
+
+        //[Route("GetIdDestinationsRouteForSum/{id}")]
+        //[HttpGet]
+        //public List<double> GetIdDestinationsRouteForSum(int id)
+        //{
+        //    return DestinationsRouteBL.GetIdDestinationsRouteForSum(id);
+        //}
 
         //פונקציה המוסיפה יעד במסלול
         [Route("GetAddDestinationsRoute")]
@@ -51,5 +58,7 @@ namespace QuicklyServer.Controllers
         {
             return DestinationsRouteBL.GetRemoveDestinationsRoute(id);
         }
+
+
     }
 }
