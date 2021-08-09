@@ -1,0 +1,55 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using BL;
+using Entities;
+
+namespace QuicklyServer.Controllers
+{
+    [RoutePrefix("api/Order")]
+    public class OrderController : ApiController
+    {
+        //פונקציה השולפת רשימת הזמנות
+        [Route("GatAllOrder")]
+        [HttpGet]
+        public List<OrderEntities> GetAllOrder()
+        {
+            return OrderBL.GetAllOrder();
+        }
+
+        //פונקציה השולפת הזמנה על פי קוד
+        [Route("GetIdOrder/{id}")]
+        [HttpGet]
+        public OrderEntities GetIdOrder(int id)
+        {
+            return OrderBL.GetIdOrder(id);
+        }
+
+        //פונקציה המוסיפה הזמנה
+        [Route("GetAddOrder")]
+        [HttpPut]
+        public List<OrderEntities> GetAddOrder([FromBody] OrderEntities C)
+        {
+            return OrderBL.GetAddOrder(C);
+        }
+
+        //פונקציה המעדכנת הזמנה שקיימת
+        [Route("GetUpdatOrder")]
+        [HttpPost]
+        public List<OrderEntities> GetUpdatOrder([FromBody] OrderEntities C)
+        {
+            return OrderBL.GetUpdatOrder(C);
+        }
+
+        //פונקציה שמוחקת הזמנה שקיימת
+        [Route("GetRemoveOrder/{id}")]
+        [HttpDelete]
+        public List<OrderEntities> GetRemoveOrder(int id)
+        {
+            return OrderBL.GetRemoveOrder(id);
+        }
+    }
+}
