@@ -1,0 +1,1201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ShilatMoriyaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BusinessDays">
+          <Key>
+            <PropertyRef Name="BusinessDaysID" />
+          </Key>
+          <Property Name="BusinessDaysID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SendingCompanyID" Type="int" Nullable="false" />
+          <Property Name="Day" Type="int" Nullable="false" />
+          <Property Name="BeginningTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="EndTime" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CarsCampany">
+          <Key>
+            <PropertyRef Name="CarsCompanyID" />
+            <PropertyRef Name="SendingCompanyID" />
+            <PropertyRef Name="CarTypeID" />
+          </Key>
+          <Property Name="CarsCompanyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SendingCompanyID" Type="int" Nullable="false" />
+          <Property Name="CarTypeID" Type="int" Nullable="false" />
+          <Property Name="MaxVolume" Type="float" />
+        </EntityType>
+        <EntityType Name="CarsTypes">
+          <Key>
+            <PropertyRef Name="CarTypeID" />
+          </Key>
+          <Property Name="CarTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CarTypeName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CitiesCompany">
+          <Key>
+            <PropertyRef Name="CitiesCompanyID" />
+            <PropertyRef Name="SendingCompanyID" />
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CitiesCompanyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SendingCompanyID" Type="int" Nullable="false" />
+          <Property Name="CityID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CompanyBankDetails">
+          <Key>
+            <PropertyRef Name="CompanyBankDetailsID" />
+          </Key>
+          <Property Name="CompanyBankDetailsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SendingCompanyID" Type="int" Nullable="false" />
+          <Property Name="BeneficiaryName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Bank" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Branch" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AccountNumber" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeliveryRoutes">
+          <Key>
+            <PropertyRef Name="DeliveryRoutesID" />
+          </Key>
+          <Property Name="DeliveryRoutesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SendingCompanyID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeliveryType">
+          <Key>
+            <PropertyRef Name="DeliveryTypeID" />
+          </Key>
+          <Property Name="DeliveryTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeliveryTypeName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeliveryUrgency">
+          <Key>
+            <PropertyRef Name="DeliveryUrgencyID" />
+          </Key>
+          <Property Name="DeliveryUrgencyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Urgency" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DestinationsRoute">
+          <Key>
+            <PropertyRef Name="DestinationsRouteID" />
+          </Key>
+          <Property Name="DestinationsRouteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeliveryRoutesID" Type="int" Nullable="false" />
+          <Property Name="OrderID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GivingDelivery">
+          <Key>
+            <PropertyRef Name="GivingDeliveryID" />
+          </Key>
+          <Property Name="GivingDeliveryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="CityID" Type="int" Nullable="false" />
+          <Property Name="StreetID" Type="int" Nullable="false" />
+          <Property Name="BuildingNumber" Type="int" />
+          <Property Name="EntranceBuilding" Type="varchar" MaxLength="50" />
+          <Property Name="FloorNumber" Type="varchar" MaxLength="50" />
+          <Property Name="ApartmentNumber" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AdditionalPhone" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PickUpTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="PickUpTimeUntil" Type="time" Precision="7" Nullable="false" />
+          <Property Name="latAddress" Type="float" />
+          <Property Name="lngaddress" Type="float" />
+          <Property Name="NameAddress" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="OrderDate" Type="date" Nullable="false" />
+          <Property Name="DeliveryTypeID" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="Volume" Type="float" Nullable="false" />
+          <Property Name="DeliveryUrgencyID" Type="int" Nullable="false" />
+          <Property Name="FinalPay" Type="float" Nullable="false" />
+          <Property Name="Note" Type="varchar" MaxLength="50" />
+          <Property Name="SentOrNot" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SendingCompany">
+          <Key>
+            <PropertyRef Name="SendingCompanyID" />
+          </Key>
+          <Property Name="SendingCompanyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FullAddress" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CompanyNumber" Type="int" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Street">
+          <Key>
+            <PropertyRef Name="StreetID" />
+          </Key>
+          <Property Name="StreetID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StreetName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TakingDelivery">
+          <Key>
+            <PropertyRef Name="TakingDeliveryID" />
+          </Key>
+          <Property Name="TakingDeliveryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="CityID" Type="int" Nullable="false" />
+          <Property Name="StreetID" Type="int" Nullable="false" />
+          <Property Name="BuildingNumber" Type="int" />
+          <Property Name="EntranceBuilding" Type="int" />
+          <Property Name="FloorNumber" Type="int" />
+          <Property Name="ApartmentNumber" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AdditionalPhone" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PickUpTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="PickUpTimeUntil" Type="time" Precision="7" Nullable="false" />
+          <Property Name="latAddress" Type="float" />
+          <Property Name="lngAddress" Type="float" />
+          <Property Name="NameAddress" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_BusinessDays_SendingCompany1">
+          <End Role="SendingCompany" Type="Self.SendingCompany" Multiplicity="1" />
+          <End Role="BusinessDays" Type="Self.BusinessDays" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SendingCompany">
+              <PropertyRef Name="SendingCompanyID" />
+            </Principal>
+            <Dependent Role="BusinessDays">
+              <PropertyRef Name="SendingCompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CitiesCompany_City">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="CitiesCompany" Type="Self.CitiesCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="CitiesCompany">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CitiesCompany_SendingCompany">
+          <End Role="SendingCompany" Type="Self.SendingCompany" Multiplicity="1" />
+          <End Role="CitiesCompany" Type="Self.CitiesCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SendingCompany">
+              <PropertyRef Name="SendingCompanyID" />
+            </Principal>
+            <Dependent Role="CitiesCompany">
+              <PropertyRef Name="SendingCompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyBankDetails_SendingCompany1">
+          <End Role="SendingCompany" Type="Self.SendingCompany" Multiplicity="1" />
+          <End Role="CompanyBankDetails" Type="Self.CompanyBankDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SendingCompany">
+              <PropertyRef Name="SendingCompanyID" />
+            </Principal>
+            <Dependent Role="CompanyBankDetails">
+              <PropertyRef Name="SendingCompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeliveryRoutes_SendingCompany1">
+          <End Role="SendingCompany" Type="Self.SendingCompany" Multiplicity="1" />
+          <End Role="DeliveryRoutes" Type="Self.DeliveryRoutes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SendingCompany">
+              <PropertyRef Name="SendingCompanyID" />
+            </Principal>
+            <Dependent Role="DeliveryRoutes">
+              <PropertyRef Name="SendingCompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DestinationsRoute_DeliveryRoutes">
+          <End Role="DeliveryRoutes" Type="Self.DeliveryRoutes" Multiplicity="1" />
+          <End Role="DestinationsRoute" Type="Self.DestinationsRoute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeliveryRoutes">
+              <PropertyRef Name="DeliveryRoutesID" />
+            </Principal>
+            <Dependent Role="DestinationsRoute">
+              <PropertyRef Name="DeliveryRoutesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DestinationsRoute_Order1">
+          <End Role="Order" Type="Self.Order" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DestinationsRoute" Type="Self.DestinationsRoute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="DestinationsRoute">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GivingDelivery_City1">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="GivingDelivery" Type="Self.GivingDelivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="GivingDelivery">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GivingDelivery_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GivingDelivery" Type="Self.GivingDelivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="GivingDelivery">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GivingDelivery_Street1">
+          <End Role="Street" Type="Self.Street" Multiplicity="1" />
+          <End Role="GivingDelivery" Type="Self.GivingDelivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Street">
+              <PropertyRef Name="StreetID" />
+            </Principal>
+            <Dependent Role="GivingDelivery">
+              <PropertyRef Name="StreetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_ClientID">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_DeliveryType1">
+          <End Role="DeliveryType" Type="Self.DeliveryType" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeliveryType">
+              <PropertyRef Name="DeliveryTypeID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="DeliveryTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShippingOrder_DeliveryUrgency">
+          <End Role="DeliveryUrgency" Type="Self.DeliveryUrgency" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeliveryUrgency">
+              <PropertyRef Name="DeliveryUrgencyID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="DeliveryUrgencyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TakingDelivery_City1">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="TakingDelivery" Type="Self.TakingDelivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="TakingDelivery">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TakingDelivery_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TakingDelivery" Type="Self.TakingDelivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="TakingDelivery">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TakingDelivery_Street1">
+          <End Role="Street" Type="Self.Street" Multiplicity="1" />
+          <End Role="TakingDelivery" Type="Self.TakingDelivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Street">
+              <PropertyRef Name="StreetID" />
+            </Principal>
+            <Dependent Role="TakingDelivery">
+              <PropertyRef Name="StreetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ShilatMoriyaModelStoreContainer">
+          <EntitySet Name="BusinessDays" EntityType="Self.BusinessDays" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CarsCampany" EntityType="Self.CarsCampany" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CarsTypes" EntityType="Self.CarsTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CitiesCompany" EntityType="Self.CitiesCompany" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyBankDetails" EntityType="Self.CompanyBankDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeliveryRoutes" EntityType="Self.DeliveryRoutes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeliveryType" EntityType="Self.DeliveryType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeliveryUrgency" EntityType="Self.DeliveryUrgency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DestinationsRoute" EntityType="Self.DestinationsRoute" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GivingDelivery" EntityType="Self.GivingDelivery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SendingCompany" EntityType="Self.SendingCompany" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Street" EntityType="Self.Street" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TakingDelivery" EntityType="Self.TakingDelivery" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BusinessDays_SendingCompany1" Association="Self.FK_BusinessDays_SendingCompany1">
+            <End Role="SendingCompany" EntitySet="SendingCompany" />
+            <End Role="BusinessDays" EntitySet="BusinessDays" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CitiesCompany_City" Association="Self.FK_CitiesCompany_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="CitiesCompany" EntitySet="CitiesCompany" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CitiesCompany_SendingCompany" Association="Self.FK_CitiesCompany_SendingCompany">
+            <End Role="SendingCompany" EntitySet="SendingCompany" />
+            <End Role="CitiesCompany" EntitySet="CitiesCompany" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyBankDetails_SendingCompany1" Association="Self.FK_CompanyBankDetails_SendingCompany1">
+            <End Role="SendingCompany" EntitySet="SendingCompany" />
+            <End Role="CompanyBankDetails" EntitySet="CompanyBankDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeliveryRoutes_SendingCompany1" Association="Self.FK_DeliveryRoutes_SendingCompany1">
+            <End Role="SendingCompany" EntitySet="SendingCompany" />
+            <End Role="DeliveryRoutes" EntitySet="DeliveryRoutes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DestinationsRoute_DeliveryRoutes" Association="Self.FK_DestinationsRoute_DeliveryRoutes">
+            <End Role="DeliveryRoutes" EntitySet="DeliveryRoutes" />
+            <End Role="DestinationsRoute" EntitySet="DestinationsRoute" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DestinationsRoute_Order1" Association="Self.FK_DestinationsRoute_Order1">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="DestinationsRoute" EntitySet="DestinationsRoute" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GivingDelivery_City1" Association="Self.FK_GivingDelivery_City1">
+            <End Role="City" EntitySet="City" />
+            <End Role="GivingDelivery" EntitySet="GivingDelivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GivingDelivery_Order" Association="Self.FK_GivingDelivery_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="GivingDelivery" EntitySet="GivingDelivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GivingDelivery_Street1" Association="Self.FK_GivingDelivery_Street1">
+            <End Role="Street" EntitySet="Street" />
+            <End Role="GivingDelivery" EntitySet="GivingDelivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_ClientID" Association="Self.FK_Order_ClientID">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_DeliveryType1" Association="Self.FK_Order_DeliveryType1">
+            <End Role="DeliveryType" EntitySet="DeliveryType" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShippingOrder_DeliveryUrgency" Association="Self.FK_ShippingOrder_DeliveryUrgency">
+            <End Role="DeliveryUrgency" EntitySet="DeliveryUrgency" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TakingDelivery_City1" Association="Self.FK_TakingDelivery_City1">
+            <End Role="City" EntitySet="City" />
+            <End Role="TakingDelivery" EntitySet="TakingDelivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TakingDelivery_Order" Association="Self.FK_TakingDelivery_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="TakingDelivery" EntitySet="TakingDelivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TakingDelivery_Street1" Association="Self.FK_TakingDelivery_Street1">
+            <End Role="Street" EntitySet="Street" />
+            <End Role="TakingDelivery" EntitySet="TakingDelivery" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ShilatMoriyaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BusinessDays">
+          <Key>
+            <PropertyRef Name="BusinessDaysID" />
+          </Key>
+          <Property Name="BusinessDaysID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SendingCompanyID" Type="Int32" Nullable="false" />
+          <Property Name="Day" Type="Int32" Nullable="false" />
+          <Property Name="BeginningTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="EndTime" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="SendingCompany" Relationship="Self.FK_BusinessDays_SendingCompany1" FromRole="BusinessDays" ToRole="SendingCompany" />
+        </EntityType>
+        <EntityType Name="CarsCampany">
+          <Key>
+            <PropertyRef Name="CarsCompanyID" />
+            <PropertyRef Name="SendingCompanyID" />
+            <PropertyRef Name="CarTypeID" />
+          </Key>
+          <Property Name="CarsCompanyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SendingCompanyID" Type="Int32" Nullable="false" />
+          <Property Name="CarTypeID" Type="Int32" Nullable="false" />
+          <Property Name="MaxVolume" Type="Double" />
+        </EntityType>
+        <EntityType Name="CarsTypes">
+          <Key>
+            <PropertyRef Name="CarTypeID" />
+          </Key>
+          <Property Name="CarTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CarTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CitiesCompany">
+          <Key>
+            <PropertyRef Name="CitiesCompanyID" />
+            <PropertyRef Name="SendingCompanyID" />
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CitiesCompanyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SendingCompanyID" Type="Int32" Nullable="false" />
+          <Property Name="CityID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="City" Relationship="Self.FK_CitiesCompany_City" FromRole="CitiesCompany" ToRole="City" />
+          <NavigationProperty Name="SendingCompany" Relationship="Self.FK_CitiesCompany_SendingCompany" FromRole="CitiesCompany" ToRole="SendingCompany" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CitiesCompany" Relationship="Self.FK_CitiesCompany_City" FromRole="City" ToRole="CitiesCompany" />
+          <NavigationProperty Name="GivingDelivery" Relationship="Self.FK_GivingDelivery_City1" FromRole="City" ToRole="GivingDelivery" />
+          <NavigationProperty Name="TakingDelivery" Relationship="Self.FK_TakingDelivery_City1" FromRole="City" ToRole="TakingDelivery" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_ClientID" FromRole="Client" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="CompanyBankDetails">
+          <Key>
+            <PropertyRef Name="CompanyBankDetailsID" />
+          </Key>
+          <Property Name="CompanyBankDetailsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SendingCompanyID" Type="Int32" Nullable="false" />
+          <Property Name="BeneficiaryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Bank" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AccountNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SendingCompany" Relationship="Self.FK_CompanyBankDetails_SendingCompany1" FromRole="CompanyBankDetails" ToRole="SendingCompany" />
+        </EntityType>
+        <EntityType Name="DeliveryRoutes">
+          <Key>
+            <PropertyRef Name="DeliveryRoutesID" />
+          </Key>
+          <Property Name="DeliveryRoutesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SendingCompanyID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="SendingCompany" Relationship="Self.FK_DeliveryRoutes_SendingCompany1" FromRole="DeliveryRoutes" ToRole="SendingCompany" />
+          <NavigationProperty Name="DestinationsRoute" Relationship="Self.FK_DestinationsRoute_DeliveryRoutes" FromRole="DeliveryRoutes" ToRole="DestinationsRoute" />
+        </EntityType>
+        <EntityType Name="DeliveryType">
+          <Key>
+            <PropertyRef Name="DeliveryTypeID" />
+          </Key>
+          <Property Name="DeliveryTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeliveryTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_DeliveryType1" FromRole="DeliveryType" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="DeliveryUrgency">
+          <Key>
+            <PropertyRef Name="DeliveryUrgencyID" />
+          </Key>
+          <Property Name="DeliveryUrgencyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Urgency" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_ShippingOrder_DeliveryUrgency" FromRole="DeliveryUrgency" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="DestinationsRoute">
+          <Key>
+            <PropertyRef Name="DestinationsRouteID" />
+          </Key>
+          <Property Name="DestinationsRouteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeliveryRoutesID" Type="Int32" Nullable="false" />
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DeliveryRoutes" Relationship="Self.FK_DestinationsRoute_DeliveryRoutes" FromRole="DestinationsRoute" ToRole="DeliveryRoutes" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_DestinationsRoute_Order1" FromRole="DestinationsRoute" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="GivingDelivery">
+          <Key>
+            <PropertyRef Name="GivingDeliveryID" />
+          </Key>
+          <Property Name="GivingDeliveryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="CityID" Type="Int32" Nullable="false" />
+          <Property Name="StreetID" Type="Int32" Nullable="false" />
+          <Property Name="BuildingNumber" Type="Int32" />
+          <Property Name="EntranceBuilding" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FloorNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApartmentNumber" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AdditionalPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PickUpTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="PickUpTimeUntil" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="latAddress" Type="Double" />
+          <Property Name="lngaddress" Type="Double" />
+          <Property Name="NameAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="City" Relationship="Self.FK_GivingDelivery_City1" FromRole="GivingDelivery" ToRole="City" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_GivingDelivery_Order" FromRole="GivingDelivery" ToRole="Order" />
+          <NavigationProperty Name="Street" Relationship="Self.FK_GivingDelivery_Street1" FromRole="GivingDelivery" ToRole="Street" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DeliveryTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="Volume" Type="Double" Nullable="false" />
+          <Property Name="DeliveryUrgencyID" Type="Int32" Nullable="false" />
+          <Property Name="FinalPay" Type="Double" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SentOrNot" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Order_ClientID" FromRole="Order" ToRole="Client" />
+          <NavigationProperty Name="DeliveryType" Relationship="Self.FK_Order_DeliveryType1" FromRole="Order" ToRole="DeliveryType" />
+          <NavigationProperty Name="DeliveryUrgency" Relationship="Self.FK_ShippingOrder_DeliveryUrgency" FromRole="Order" ToRole="DeliveryUrgency" />
+          <NavigationProperty Name="DestinationsRoute" Relationship="Self.FK_DestinationsRoute_Order1" FromRole="Order" ToRole="DestinationsRoute" />
+          <NavigationProperty Name="GivingDelivery" Relationship="Self.FK_GivingDelivery_Order" FromRole="Order" ToRole="GivingDelivery" />
+          <NavigationProperty Name="TakingDelivery" Relationship="Self.FK_TakingDelivery_Order" FromRole="Order" ToRole="TakingDelivery" />
+        </EntityType>
+        <EntityType Name="SendingCompany">
+          <Key>
+            <PropertyRef Name="SendingCompanyID" />
+          </Key>
+          <Property Name="SendingCompanyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FullAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CompanyNumber" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="BusinessDays" Relationship="Self.FK_BusinessDays_SendingCompany1" FromRole="SendingCompany" ToRole="BusinessDays" />
+          <NavigationProperty Name="CitiesCompany" Relationship="Self.FK_CitiesCompany_SendingCompany" FromRole="SendingCompany" ToRole="CitiesCompany" />
+          <NavigationProperty Name="CompanyBankDetails" Relationship="Self.FK_CompanyBankDetails_SendingCompany1" FromRole="SendingCompany" ToRole="CompanyBankDetails" />
+          <NavigationProperty Name="DeliveryRoutes" Relationship="Self.FK_DeliveryRoutes_SendingCompany1" FromRole="SendingCompany" ToRole="DeliveryRoutes" />
+        </EntityType>
+        <EntityType Name="Street">
+          <Key>
+            <PropertyRef Name="StreetID" />
+          </Key>
+          <Property Name="StreetID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StreetName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="GivingDelivery" Relationship="Self.FK_GivingDelivery_Street1" FromRole="Street" ToRole="GivingDelivery" />
+          <NavigationProperty Name="TakingDelivery" Relationship="Self.FK_TakingDelivery_Street1" FromRole="Street" ToRole="TakingDelivery" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TakingDelivery">
+          <Key>
+            <PropertyRef Name="TakingDeliveryID" />
+          </Key>
+          <Property Name="TakingDeliveryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="CityID" Type="Int32" Nullable="false" />
+          <Property Name="StreetID" Type="Int32" Nullable="false" />
+          <Property Name="BuildingNumber" Type="Int32" />
+          <Property Name="EntranceBuilding" Type="Int32" />
+          <Property Name="FloorNumber" Type="Int32" />
+          <Property Name="ApartmentNumber" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AdditionalPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PickUpTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="PickUpTimeUntil" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="latAddress" Type="Double" />
+          <Property Name="lngAddress" Type="Double" />
+          <Property Name="NameAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="City" Relationship="Self.FK_TakingDelivery_City1" FromRole="TakingDelivery" ToRole="City" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_TakingDelivery_Order" FromRole="TakingDelivery" ToRole="Order" />
+          <NavigationProperty Name="Street" Relationship="Self.FK_TakingDelivery_Street1" FromRole="TakingDelivery" ToRole="Street" />
+        </EntityType>
+        <Association Name="FK_BusinessDays_SendingCompany1">
+          <End Role="SendingCompany" Type="Self.SendingCompany" Multiplicity="1" />
+          <End Role="BusinessDays" Type="Self.BusinessDays" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SendingCompany">
+              <PropertyRef Name="SendingCompanyID" />
+            </Principal>
+            <Dependent Role="BusinessDays">
+              <PropertyRef Name="SendingCompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CitiesCompany_City">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="CitiesCompany" Type="Self.CitiesCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="CitiesCompany">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CitiesCompany_SendingCompany">
+          <End Role="SendingCompany" Type="Self.SendingCompany" Multiplicity="1" />
+          <End Role="CitiesCompany" Type="Self.CitiesCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SendingCompany">
+              <PropertyRef Name="SendingCompanyID" />
+            </Principal>
+            <Dependent Role="CitiesCompany">
+              <PropertyRef Name="SendingCompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GivingDelivery_City1">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="GivingDelivery" Type="Self.GivingDelivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="GivingDelivery">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TakingDelivery_City1">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="TakingDelivery" Type="Self.TakingDelivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="TakingDelivery">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_ClientID">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyBankDetails_SendingCompany1">
+          <End Role="SendingCompany" Type="Self.SendingCompany" Multiplicity="1" />
+          <End Role="CompanyBankDetails" Type="Self.CompanyBankDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SendingCompany">
+              <PropertyRef Name="SendingCompanyID" />
+            </Principal>
+            <Dependent Role="CompanyBankDetails">
+              <PropertyRef Name="SendingCompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeliveryRoutes_SendingCompany1">
+          <End Role="SendingCompany" Type="Self.SendingCompany" Multiplicity="1" />
+          <End Role="DeliveryRoutes" Type="Self.DeliveryRoutes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SendingCompany">
+              <PropertyRef Name="SendingCompanyID" />
+            </Principal>
+            <Dependent Role="DeliveryRoutes">
+              <PropertyRef Name="SendingCompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DestinationsRoute_DeliveryRoutes">
+          <End Role="DeliveryRoutes" Type="Self.DeliveryRoutes" Multiplicity="1" />
+          <End Role="DestinationsRoute" Type="Self.DestinationsRoute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeliveryRoutes">
+              <PropertyRef Name="DeliveryRoutesID" />
+            </Principal>
+            <Dependent Role="DestinationsRoute">
+              <PropertyRef Name="DeliveryRoutesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_DeliveryType1">
+          <End Role="DeliveryType" Type="Self.DeliveryType" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeliveryType">
+              <PropertyRef Name="DeliveryTypeID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="DeliveryTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShippingOrder_DeliveryUrgency">
+          <End Role="DeliveryUrgency" Type="Self.DeliveryUrgency" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeliveryUrgency">
+              <PropertyRef Name="DeliveryUrgencyID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="DeliveryUrgencyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DestinationsRoute_Order1">
+          <End Role="Order" Type="Self.Order" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DestinationsRoute" Type="Self.DestinationsRoute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="DestinationsRoute">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GivingDelivery_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GivingDelivery" Type="Self.GivingDelivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="GivingDelivery">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GivingDelivery_Street1">
+          <End Role="Street" Type="Self.Street" Multiplicity="1" />
+          <End Role="GivingDelivery" Type="Self.GivingDelivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Street">
+              <PropertyRef Name="StreetID" />
+            </Principal>
+            <Dependent Role="GivingDelivery">
+              <PropertyRef Name="StreetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TakingDelivery_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TakingDelivery" Type="Self.TakingDelivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="TakingDelivery">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TakingDelivery_Street1">
+          <End Role="Street" Type="Self.Street" Multiplicity="1" />
+          <End Role="TakingDelivery" Type="Self.TakingDelivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Street">
+              <PropertyRef Name="StreetID" />
+            </Principal>
+            <Dependent Role="TakingDelivery">
+              <PropertyRef Name="StreetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QuicklyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BusinessDays" EntityType="Self.BusinessDays" />
+          <EntitySet Name="CarsCampany" EntityType="Self.CarsCampany" />
+          <EntitySet Name="CarsTypes" EntityType="Self.CarsTypes" />
+          <EntitySet Name="CitiesCompany" EntityType="Self.CitiesCompany" />
+          <EntitySet Name="City" EntityType="Self.City" />
+          <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="CompanyBankDetails" EntityType="Self.CompanyBankDetails" />
+          <EntitySet Name="DeliveryRoutes" EntityType="Self.DeliveryRoutes" />
+          <EntitySet Name="DeliveryType" EntityType="Self.DeliveryType" />
+          <EntitySet Name="DeliveryUrgency" EntityType="Self.DeliveryUrgency" />
+          <EntitySet Name="DestinationsRoute" EntityType="Self.DestinationsRoute" />
+          <EntitySet Name="GivingDelivery" EntityType="Self.GivingDelivery" />
+          <EntitySet Name="Order" EntityType="Self.Order" />
+          <EntitySet Name="SendingCompany" EntityType="Self.SendingCompany" />
+          <EntitySet Name="Street" EntityType="Self.Street" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TakingDelivery" EntityType="Self.TakingDelivery" />
+          <AssociationSet Name="FK_BusinessDays_SendingCompany1" Association="Self.FK_BusinessDays_SendingCompany1">
+            <End Role="SendingCompany" EntitySet="SendingCompany" />
+            <End Role="BusinessDays" EntitySet="BusinessDays" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CitiesCompany_City" Association="Self.FK_CitiesCompany_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="CitiesCompany" EntitySet="CitiesCompany" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CitiesCompany_SendingCompany" Association="Self.FK_CitiesCompany_SendingCompany">
+            <End Role="SendingCompany" EntitySet="SendingCompany" />
+            <End Role="CitiesCompany" EntitySet="CitiesCompany" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GivingDelivery_City1" Association="Self.FK_GivingDelivery_City1">
+            <End Role="City" EntitySet="City" />
+            <End Role="GivingDelivery" EntitySet="GivingDelivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TakingDelivery_City1" Association="Self.FK_TakingDelivery_City1">
+            <End Role="City" EntitySet="City" />
+            <End Role="TakingDelivery" EntitySet="TakingDelivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_ClientID" Association="Self.FK_Order_ClientID">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyBankDetails_SendingCompany1" Association="Self.FK_CompanyBankDetails_SendingCompany1">
+            <End Role="SendingCompany" EntitySet="SendingCompany" />
+            <End Role="CompanyBankDetails" EntitySet="CompanyBankDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeliveryRoutes_SendingCompany1" Association="Self.FK_DeliveryRoutes_SendingCompany1">
+            <End Role="SendingCompany" EntitySet="SendingCompany" />
+            <End Role="DeliveryRoutes" EntitySet="DeliveryRoutes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DestinationsRoute_DeliveryRoutes" Association="Self.FK_DestinationsRoute_DeliveryRoutes">
+            <End Role="DeliveryRoutes" EntitySet="DeliveryRoutes" />
+            <End Role="DestinationsRoute" EntitySet="DestinationsRoute" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_DeliveryType1" Association="Self.FK_Order_DeliveryType1">
+            <End Role="DeliveryType" EntitySet="DeliveryType" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShippingOrder_DeliveryUrgency" Association="Self.FK_ShippingOrder_DeliveryUrgency">
+            <End Role="DeliveryUrgency" EntitySet="DeliveryUrgency" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DestinationsRoute_Order1" Association="Self.FK_DestinationsRoute_Order1">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="DestinationsRoute" EntitySet="DestinationsRoute" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GivingDelivery_Order" Association="Self.FK_GivingDelivery_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="GivingDelivery" EntitySet="GivingDelivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GivingDelivery_Street1" Association="Self.FK_GivingDelivery_Street1">
+            <End Role="Street" EntitySet="Street" />
+            <End Role="GivingDelivery" EntitySet="GivingDelivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TakingDelivery_Order" Association="Self.FK_TakingDelivery_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="TakingDelivery" EntitySet="TakingDelivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TakingDelivery_Street1" Association="Self.FK_TakingDelivery_Street1">
+            <End Role="Street" EntitySet="Street" />
+            <End Role="TakingDelivery" EntitySet="TakingDelivery" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ShilatMoriyaModelStoreContainer" CdmEntityContainer="QuicklyEntities">
+          <EntitySetMapping Name="BusinessDays">
+            <EntityTypeMapping TypeName="ShilatMoriyaModel.BusinessDays">
+              <MappingFragment StoreEntitySet="BusinessDays">
+                <ScalarProperty Name="BusinessDaysID" ColumnName="BusinessDaysID" />
+                <ScalarProperty Name="SendingCompanyID" ColumnName="SendingCompanyID" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="BeginningTime" ColumnName="BeginningTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CarsCampany">
+            <EntityTypeMapping TypeName="ShilatMoriyaModel.CarsCampany">
+              <MappingFragment StoreEntitySet="CarsCampany">
+                <ScalarProperty Name="CarsCompanyID" ColumnName="CarsCompanyID" />
+                <ScalarProperty Name="SendingCompanyID" ColumnName="SendingCompanyID" />
+                <ScalarProperty Name="CarTypeID" ColumnName="CarTypeID" />
+                <ScalarProperty Name="MaxVolume" ColumnName="MaxVolume" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CarsTypes">
+            <EntityTypeMapping TypeName="ShilatMoriyaModel.CarsTypes">
+              <MappingFragment StoreEntitySet="CarsTypes">
+                <ScalarProperty Name="CarTypeID" ColumnName="CarTypeID" />
+                <ScalarProperty Name="CarTypeName" ColumnName="CarTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CitiesCompany">
+            <EntityTypeMapping TypeName="ShilatMoriyaModel.CitiesCompany">
+              <MappingFragment StoreEntitySet="CitiesCompany">
+                <ScalarProperty Name="CitiesCompanyID" ColumnName="CitiesCompanyID" />
+                <ScalarProperty Name="SendingCompanyID" ColumnName="SendingCompanyID" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="ShilatMoriyaModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="ShilatMoriyaModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyBankDetails">
+            <EntityTypeMapping TypeName="ShilatMoriyaModel.CompanyBankDetails">
+              <MappingFragment StoreEntitySet="CompanyBankDetails">
+                <ScalarProperty Name="CompanyBankDetailsID" ColumnName="CompanyBankDetailsID" />
+                <ScalarProperty Name="SendingCompanyID" ColumnName="SendingCompanyID" />
+                <ScalarProperty Name="BeneficiaryName" ColumnName="BeneficiaryName" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeliveryRoutes">
+            <EntityTypeMapping TypeName="ShilatMoriyaModel.DeliveryRoutes">
+              <MappingFragment StoreEntitySet="DeliveryRoutes">
+                <ScalarProperty Name="DeliveryRoutesID" ColumnName="DeliveryRoutesID" />
+                <ScalarProperty Name="SendingCompanyID" ColumnName="SendingCompanyID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeliveryType">
+            <EntityTypeMapping TypeName="ShilatMoriyaModel.DeliveryType">
+              <MappingFragment StoreEntitySet="DeliveryType">
+                <ScalarProperty Name="DeliveryTypeID" ColumnName="DeliveryTypeID" />
+                <ScalarProperty Name="DeliveryTypeName" ColumnName="DeliveryTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeliveryUrgency">
+            <EntityTypeMapping TypeName="ShilatMoriyaModel.DeliveryUrgency">
+              <MappingFragment StoreEntitySet="DeliveryUrgency">
+                <ScalarProperty Name="DeliveryUrgencyID" ColumnName="DeliveryUrgencyID" />
+                <ScalarProperty Name="Urgency" ColumnName="Urgency" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DestinationsRoute">
+            <EntityTypeMapping TypeName="ShilatMoriyaModel.DestinationsRoute">
+              <MappingFragment StoreEntitySet="DestinationsRoute">
+                <ScalarProperty Name="DestinationsRouteID" ColumnName="DestinationsRouteID" />
+                <ScalarProperty Name="DeliveryRoutesID" ColumnName="DeliveryRoutesID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GivingDelivery">
+            <EntityTypeMapping TypeName="ShilatMoriyaModel.GivingDelivery">
+              <MappingFragment StoreEntitySet="GivingDelivery">
+                <ScalarProperty Name="GivingDeliveryID" ColumnName="GivingDeliveryID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="StreetID" ColumnName="StreetID" />
+                <ScalarProperty Name="BuildingNumber" ColumnName="BuildingNumber" />
+                <ScalarProperty Name="EntranceBuilding" ColumnName="EntranceBuilding" />
+                <ScalarProperty Name="FloorNumber" ColumnName="FloorNumber" />
+                <ScalarProperty Name="ApartmentNumber" ColumnName="ApartmentNumber" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="AdditionalPhone" ColumnName="AdditionalPhone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PickUpTime" ColumnName="PickUpTime" />
+                <ScalarProperty Name="PickUpTimeUntil" ColumnName="PickUpTimeUntil" />
+                <ScalarProperty Name="latAddress" ColumnName="latAddress" />
+                <ScalarProperty Name="lngaddress" ColumnName="lngaddress" />
+                <ScalarProperty Name="NameAddress" ColumnName="NameAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order">
+            <EntityTypeMapping TypeName="ShilatMoriyaModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="DeliveryTypeID" ColumnName="DeliveryTypeID" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+                <ScalarProperty Name="DeliveryUrgencyID" ColumnName="DeliveryUrgencyID" />
+                <ScalarProperty Name="FinalPay" ColumnName="FinalPay" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="SentOrNot" ColumnName="SentOrNot" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SendingCompany">
+            <EntityTypeMapping TypeName="ShilatMoriyaModel.SendingCompany">
+              <MappingFragment StoreEntitySet="SendingCompany">
+                <ScalarProperty Name="SendingCompanyID" ColumnName="SendingCompanyID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="FullAddress" ColumnName="FullAddress" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CompanyNumber" ColumnName="CompanyNumber" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Street">
+            <EntityTypeMapping TypeName="ShilatMoriyaModel.Street">
+              <MappingFragment StoreEntitySet="Street">
+                <ScalarProperty Name="StreetID" ColumnName="StreetID" />
+                <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ShilatMoriyaModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TakingDelivery">
+            <EntityTypeMapping TypeName="ShilatMoriyaModel.TakingDelivery">
+              <MappingFragment StoreEntitySet="TakingDelivery">
+                <ScalarProperty Name="TakingDeliveryID" ColumnName="TakingDeliveryID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="StreetID" ColumnName="StreetID" />
+                <ScalarProperty Name="BuildingNumber" ColumnName="BuildingNumber" />
+                <ScalarProperty Name="EntranceBuilding" ColumnName="EntranceBuilding" />
+                <ScalarProperty Name="FloorNumber" ColumnName="FloorNumber" />
+                <ScalarProperty Name="ApartmentNumber" ColumnName="ApartmentNumber" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="AdditionalPhone" ColumnName="AdditionalPhone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PickUpTime" ColumnName="PickUpTime" />
+                <ScalarProperty Name="PickUpTimeUntil" ColumnName="PickUpTimeUntil" />
+                <ScalarProperty Name="latAddress" ColumnName="latAddress" />
+                <ScalarProperty Name="lngAddress" ColumnName="lngAddress" />
+                <ScalarProperty Name="NameAddress" ColumnName="NameAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
