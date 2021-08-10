@@ -66,6 +66,5 @@ namespace QuicklyServer.Controllers
         {
             return ClientBL.GetEmailAddressPasswordID(EmailAddress, Password);
         }
-
     }
 }
